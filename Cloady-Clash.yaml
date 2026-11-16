@@ -1,0 +1,35 @@
+# Cloady 节点 · Clash / FlClash 配置
+# 导入方法：FlClash / Clash Meta 里选「导入配置文件」，选这个文件即可
+# 节点：Cloady-USW1（美国西海岸，VLESS + WS + TLS）
+
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+
+proxies:
+  - name: Cloady-USW1
+    type: vless
+    server: cloady-xray-zip-x9a411m9-workspace-tcsn21.cloady.io
+    port: 443
+    uuid: 990eaba0-ff03-4792-97a6-1e44febac59a
+    tls: true
+    servername: cloady-xray-zip-x9a411m9-workspace-tcsn21.cloady.io
+    network: ws
+    ws-opts:
+      path: /a36b565c0456
+      headers:
+        Host: cloady-xray-zip-x9a411m9-workspace-tcsn21.cloady.io
+    udp: true
+
+proxy-groups:
+  - name: 节点选择
+    type: select
+    proxies:
+      - Cloady-USW1
+
+rules:
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - MATCH,节点选择
