@@ -1,7 +1,8 @@
-# Cloady 节点 + 住宅 IP · Clash / FlClash 配置
+# Cloady 节点 + 住宅 IP + Webshare 静态 IP · Clash / FlClash 配置
 # 导入方法：FlClash / Clash Meta 里选「导入配置文件」，选这个文件即可
 # 节点：Cloady-USW1（美国西海岸，VLESS + WS + TLS）
 # 节点：住宅IP-美国（静态住宅 IP，SOCKS5，@维易 推文赠送，到期 2026-12-13；账号密码是公开的，别用它登重要账号）
+# 节点：Webshare-美国-达拉斯（Webshare 静态住宅 IP，HTTP，$1.50/月，250GB，续费日 2026-12-16）
 
 mixed-port: 7890
 allow-lan: false
@@ -31,12 +32,20 @@ proxies:
     password: mohkde2n
     udp: true
 
+  - name: Webshare-美国-达拉斯
+    type: http
+    server: 45.56.158.194
+    port: 6850
+    username: xowpedch
+    password: jew7324o3q6y
+
 proxy-groups:
   - name: 节点选择
     type: select
     proxies:
       - Cloady-USW1
       - 住宅IP-美国
+      - Webshare-美国-达拉斯
 
 rules:
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
