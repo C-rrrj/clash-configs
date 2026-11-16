@@ -1,6 +1,7 @@
-# Cloady 节点 · Clash / FlClash 配置
+# Cloady 节点 + 住宅 IP · Clash / FlClash 配置
 # 导入方法：FlClash / Clash Meta 里选「导入配置文件」，选这个文件即可
 # 节点：Cloady-USW1（美国西海岸，VLESS + WS + TLS）
+# 节点：住宅IP-美国（静态住宅 IP，SOCKS5，@维易 推文赠送，到期 2026-12-13；账号密码是公开的，别用它登重要账号）
 
 mixed-port: 7890
 allow-lan: false
@@ -22,11 +23,20 @@ proxies:
         Host: cloady-xray-zip-x9a411m9-workspace-tcsn21.cloady.io
     udp: true
 
+  - name: 住宅IP-美国
+    type: socks5
+    server: 89.47.127.47
+    port: 5432
+    username: xsaie
+    password: mohkde2n
+    udp: true
+
 proxy-groups:
   - name: 节点选择
     type: select
     proxies:
       - Cloady-USW1
+      - 住宅IP-美国
 
 rules:
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
